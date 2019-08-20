@@ -6,7 +6,9 @@
   "scripts": {
     "test": "mocha test",
     "test:coverage": "nyc npm test",
-    "success": "./node_modules/.bin/cowsay 'Hooah, elo'"
+    "test:nyan": "npm test -- --reporter 'nyan'",
+    "success": "./node_modules/.bin/cowsay 'Hooah, elo'",
+    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
   "author": "",
   "license": "ISC",
