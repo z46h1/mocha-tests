@@ -12,14 +12,19 @@ const unique = (collection, uniqueAttr) => {
     });
     return result;
 };
-
+const SEPARATOR = '_';
 const memoize = (wrappedFn) => {
     const cache = {}; // key: fn param, value: fn result
-    return (arg) => {
-        if (!cache[arg]) {
-            cache[arg] = wrappedFn(arg);
+    return (...args) => {
+        //const key = args.join(SEPARATOR);
+        if (args.some(arg => typeof arg === 'function')) {
+            throw new Error('Functions are not allowed as memoized parameters');
         }
-        return cache[arg];
+        const key = JSON.stringify(args);
+        if (!cache[key]) {
+            cache[key] = wrappedFn(...args);
+        }
+        return cache[key];
     }
 };
 
