@@ -6,9 +6,12 @@
   "scripts": {
     "test": "mocha test",
     "test:coverage": "nyc npm test",
+    "test:coverage:watch": "nyc npm test -- --watch",
     "test:nyan": "npm test -- --reporter 'nyan'",
     "success": "./node_modules/.bin/cowsay 'Hooah, elo'",
-    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "test:integration": "nyc npm test -- --grep integration",
+    "test:no-integration": "nyc npm test -- --grep integration --invert"
   },
   "author": "",
   "license": "ISC",
