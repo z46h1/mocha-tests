@@ -33,7 +33,7 @@ describe('Memoize decorator', function () {
     });
 
     it('should only call wrapped function once if called with the same parameters', function () {
-        const square = (n) => n**2;
+        const square = (n) => n*n;
         // spy existing function
         const spy = sinon.spy(square);
         const memoizedSquare = memoize(spy);
